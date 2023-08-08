@@ -39,10 +39,10 @@ class GeneralSetting(models.Model):
         verbose_name='Created Date',
 
     )
-def __str__(self):
-    return f'General Setting: {self.name}'
+    def __str__(self):
+        return f'General Setting: {self.name}'
 
-class Meta:
-    verbose_name = 'General Setting'
-    verbose_name_plural = 'General Settings'
-    ordering = ('name',)
+    class Meta:
+        verbose_name = 'General Setting'
+        verbose_name_plural = 'General Settings'
+        ordering = ('name',)
