@@ -86,10 +86,11 @@ class ImageSetting(AbstractModel):
         verbose_name_plural = 'Image  Settings'
         ordering = ('name',)
 
+
 class Skill(AbstractModel):
-    order= models.IntegerField(
+    order = models.IntegerField(
         default=0,
-        verbose_name= 'Order',
+        verbose_name='Order',
     )
     name = models.CharField(
         default='',
@@ -104,6 +105,7 @@ class Skill(AbstractModel):
         validators=[MinValueValidator(0), MaxValueValidator(100)],
 
     )
+
     def __str__(self):
         return f'Skill: {self.name}'
 
@@ -112,3 +114,40 @@ class Skill(AbstractModel):
         verbose_name_plural = 'Skills'
         ordering = ('order',)
 
+
+class Experience(AbstractModel):
+    company_name = models.CharField(
+        default='',
+        max_length=254,
+        blank=True,
+        verbose_name='Company Name',
+    )
+    job_title = models.CharField(
+        default='',
+        max_length=254,
+        blank=True,
+        verbose_name='Job Title',
+    )
+    job_location = models.CharField(
+        default='',
+        max_length=254,
+        blank=True,
+        verbose_name='Job Location',
+    )
+    start_date = models.DateField(
+        verbose_name='Start Date',
+    )
+    end_date = models.DateField(
+        default=None,
+        null=True,
+        blank=True,
+        verbose_name='End Date',
+    )
+
+    def __str__(self):
+        return f'Experience: {self.company_name}'
+
+    class Meta:
+        verbose_name = 'Experience'
+        verbose_name_plural = 'Experiences'
+        ordering = ('start_date',)
