@@ -29,9 +29,9 @@
                                     <li><a href="#"><i class="lnr lnr-home"></i> Kocaeli / Gebze</a></li>
                                 </ul>
                                 <ul class="list personal_social">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    {% for social in social_medias %}
+                                        <li><a href="{{ social.link }}" target="_blank">{{ social.icon|safe }}</a></li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
@@ -40,8 +40,6 @@
             </div>
         </div>
     </section>
-
-
 
 {% endblock %}
 
@@ -142,7 +140,7 @@
                                         </div>
                                         <div class="media-body">
                                             <h4>{{ education.school_name }}</h4>
-                                            <p>{{ education.major}} <br/>{{ education.department }}</p>
+                                            <p>{{ education.major }} <br/>{{ education.department }}</p>
                                         </div>
                                     </div>
                                 </li>
