@@ -15,6 +15,8 @@ def index(request):
 
     #Images
     site_favicon = ImageSetting.objects.get(name='site_favicon').file
+    header_logo = ImageSetting.objects.get(name='header_logo').file
+    home_banner_image = ImageSetting.objects.get(name='home_banner_image').file
 
     #Skills
     skills = Skill.objects.all()
@@ -36,6 +38,8 @@ def index(request):
         'about_myself_footer': about_myself_footer,
         'about_myself_welcome': about_myself_welcome,
         'site_favicon': site_favicon,
+        'header_logo':header_logo,
+        'home_banner_image':home_banner_image,
         'skills':skills,
         'experiences':experiences,
         'educations': educations,
