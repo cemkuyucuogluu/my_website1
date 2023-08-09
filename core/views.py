@@ -1,9 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from core.models import GeneralSetting, ImageSetting, Skill, Experience, Education, SocialMedia, Document
-
-
 # Create your views here.
-def index(request):
+def layout(request):
     site_title = GeneralSetting.objects.get(name='site_title').parameter
     site_keywords = GeneralSetting.objects.get(name='site_keywords').parameter
     site_description = GeneralSetting.objects.get(name='site_description').parameter
@@ -18,15 +16,9 @@ def index(request):
     header_logo = ImageSetting.objects.get(name='header_logo').file
     home_banner_image = ImageSetting.objects.get(name='home_banner_image').file
 
-    #Skills
-    skills = Skill.objects.all()
-
-    experiences = Experience.objects.all()
-    educations = Education.objects.all()
     social_medias = SocialMedia.objects.all()
+
     documents = Document.objects.all()
-
-
     context = {
         'site_title': site_title,
         'site_keywords': site_keywords,
@@ -38,18 +30,27 @@ def index(request):
         'about_myself_footer': about_myself_footer,
         'about_myself_welcome': about_myself_welcome,
         'site_favicon': site_favicon,
-        'header_logo':header_logo,
-        'home_banner_image':home_banner_image,
+        'header_logo': header_logo,
+        'home_banner_image': home_banner_image,
+        'documents': documents,
+        'social_medias': social_medias,
+    }
+    return context
+
+def index(request):
+
+    #Skills
+    skills = Skill.objects.all()
+
+    experiences = Experience.objects.all()
+    educations = Education.objects.all()
+
+    context = {
         'skills':skills,
         'experiences':experiences,
         'educations': educations,
-        'social_medias':social_medias,
-        'documents':documents,
-
     }
-
     return render(request, 'index.html', context=context)
-
 def redirect_urls(request, slug):
     doc = get_object_or_404(Document, slug=slug)
     return redirect(doc.file.url)

@@ -2,6 +2,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 
 
+
 def contact_form(request):
     context = {
         'success': True,
