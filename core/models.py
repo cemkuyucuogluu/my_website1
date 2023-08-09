@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator, MaxValueValidator
 from django.db import models
 
 
@@ -10,7 +11,6 @@ class AbstractModel(models.Model):
         verbose_name='Updated Date',
         help_text=''
 
-
     )
     created_date = models.DateTimeField(
         blank=True,
@@ -18,9 +18,9 @@ class AbstractModel(models.Model):
         verbose_name='Created Date',
 
     )
+
     class Meta:
         abstract = True
-
 
 
 class GeneralSetting(AbstractModel):
@@ -36,14 +36,14 @@ class GeneralSetting(AbstractModel):
         max_length=254,
         blank=True,
         verbose_name='Description',
-        help_text= ''
+        help_text=''
     )
     parameter = models.CharField(
         default='',
         max_length=254,
         blank=True,
         verbose_name='Parameter',
-        help_text = ''
+        help_text=''
     )
 
     def __str__(self):
@@ -53,6 +53,8 @@ class GeneralSetting(AbstractModel):
         verbose_name = 'General Setting'
         verbose_name_plural = 'General Settings'
         ordering = ('name',)
+
+
 class ImageSetting(AbstractModel):
     name = models.CharField(
         default='',
@@ -83,3 +85,23 @@ class ImageSetting(AbstractModel):
         verbose_name = 'Image  Setting'
         verbose_name_plural = 'Image  Settings'
         ordering = ('name',)
+
+class Skill(AbstractModel):
+    order= models.IntegerField(
+        default=0,
+        verbose_name= 'Order',
+    )
+    name = models.CharField(
+        default='',
+        max_length=254,
+        blank=True,
+        verbose_name='Name',
+        help_text='This is variable of the settings.'
+    )
+    percentage = models.IntegerField(
+        default=50,
+        verbose_name='Percantage',
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+
+    )
+
