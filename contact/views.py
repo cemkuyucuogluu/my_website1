@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from contact.models import Message
 from contact.forms import ContactForm
 
+
 # Create your views here.
 
 def contact_form(request):
@@ -21,12 +22,13 @@ def contact_form(request):
                 message=message,
             )
 
+            contact_form.send_mail()
+
             success = True
             message = 'Contact form sent successfully.'
         else:
             success = False
             message = 'Contact form is not valid.'
-
     else:
         success = False
         message = 'Request method is not valid.'

@@ -6,4 +6,3 @@ urlpatterns = [
     path('<slug>/', redirect_urls, name='redirect_urls'),
 
 ]
-

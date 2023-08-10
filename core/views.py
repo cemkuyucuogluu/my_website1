@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from core.models import GeneralSetting, ImageSetting, Skill, Experience, Education, SocialMedia, Document
+
+
 # Create your views here.
 def layout(request):
     site_title = GeneralSetting.objects.get(name='site_title').parameter
@@ -11,7 +13,7 @@ def layout(request):
     about_myself_footer = GeneralSetting.objects.get(name='about_myself_footer').parameter
     about_myself_welcome = GeneralSetting.objects.get(name='about_myself_welcome').parameter
 
-    #Images
+    # Images
     site_favicon = ImageSetting.objects.get(name='site_favicon').file
     header_logo = ImageSetting.objects.get(name='header_logo').file
     home_banner_image = ImageSetting.objects.get(name='home_banner_image').file
@@ -37,21 +39,22 @@ def layout(request):
     }
     return context
 
-def index(request):
 
-    #Skills
+def index(request):
+    # Skills
     skills = Skill.objects.all()
 
     experiences = Experience.objects.all()
     educations = Education.objects.all()
 
     context = {
-        'skills':skills,
-        'experiences':experiences,
+        'skills': skills,
+        'experiences': experiences,
         'educations': educations,
     }
     return render(request, 'index.html', context=context)
+
+
 def redirect_urls(request, slug):
     doc = get_object_or_404(Document, slug=slug)
     return redirect(doc.file.url)
-
