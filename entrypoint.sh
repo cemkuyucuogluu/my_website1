@@ -2,7 +2,7 @@
 
 python manage.py migrate --noinput
 
-python manage.py createsuperuser --username="admin" --email="cemkuyucuogluu@gmail.com" --password='623262@@' --no-input
+python manage.py createsuperuser --username="$DJANGO_SUPER_USERNAME" --email="$DJANGO_SUPER_USER_EMAIL" --no-input
 
 exec "$@"
 
