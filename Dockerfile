@@ -27,4 +27,4 @@ RUN chmod +x /srv/entrypoint.sh
 COPY . /srv/app
 WORKDIR /srv/app
 
-ENTRYPOINT ["/srv/app/entrypoint.sh"]
+ENTRYPOINT ["/srv/entrypoint.sh"]
