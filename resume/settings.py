@@ -131,7 +131,7 @@ if DEBUG:
     STATIC_URL = '/static/'
     STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-    MEDIA_URL = '/media'
+    MEDIA_URL = '/media/'
     MEDIA_ROOT = BASE_DIR / 'media'
 
     DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
@@ -154,6 +154,8 @@ else:
     STATIC_ROOT = STATIC_URL
 
     MEDIA_LOCATION = 'media'
+    IMAGE_SETTING_LOCATION = MEDIA_LOCATION + '/image_settings'
+    DOCUMENT_LOCATION = MEDIA_LOCATION + '/documents'
 
 
 
