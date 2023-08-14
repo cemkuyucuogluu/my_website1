@@ -8,5 +8,6 @@ psycopg2==2.9.7
 sqlparse==0.4.4
 typing_extensions==4.7.1
 tzdata==2023.3
-boto3
-django-strorages
+boto3==1.28.25
+django-storages==1.13.2
+
