@@ -184,6 +184,7 @@ class Education(AbstractModel):
         verbose_name='End Date',
     )
 
+
     def __str__(self):
         return f'Education: {self.school_name}'
 

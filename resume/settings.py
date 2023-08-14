@@ -134,6 +134,7 @@ if DEBUG:
     MEDIA_URL = '/media/'
     MEDIA_ROOT = BASE_DIR / 'media'
 
+
     DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 else:
     AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
